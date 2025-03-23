@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Tinder-like Swipe App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -45,8 +46,8 @@ class _ExampleScreenState extends State<ExampleScreen> {
       feedItems.clear();
       feedItems = List.generate(5, (index) {
         return FeedItem(
-          id: isNext? index+20 : index + 1,
-          title: "User ${isNext? index+20 : index + 1}",
+          id: isNext? index+6 : index + 1,
+          title: "User ${isNext? index+6 : index + 1}",
           imageUrl: "https://source.unsplash.com/random/200x200/?face,portrait&sig=$index",
           color: Colors.primaries[index+1 % Colors.primaries.length],
         );

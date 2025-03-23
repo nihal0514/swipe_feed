@@ -8,19 +8,19 @@ class SwipeableCard extends StatefulWidget {
   final FeedItem item;
   final SwipeFeedController controller;
   final Widget swipeWidget;
-  Function(FeedItem) onDislike;
-  Function(FeedItem) onLike;
+  final Function(FeedItem) onDislike;
+  final Function(FeedItem) onLike;
   final SwipeableCardController cardController;
 
-  SwipeableCard({
-    Key? key,
+  const SwipeableCard({
+    super.key,
     required this.item,
     required this.controller,
     required this.swipeWidget,
     required this.onDislike,
     required this.onLike,
     required this.cardController
-  }) : super(key: key);
+  });
 
   @override
   _SwipeableCardState createState() => _SwipeableCardState();

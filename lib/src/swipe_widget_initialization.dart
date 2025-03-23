@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../swipe_feed.dart';
 
-class SwipeWidgetInitialization extends StatefulWidget {
-  List<FeedItem> feedItems;
-  Widget Function(FeedItem,SwipeableCardController) swipeWidget;
-  Function(FeedItem) onDislike;
-  Function(FeedItem) onLike;
-  Future<List<FeedItem>> Function() onReload;
 
-  SwipeWidgetInitialization({
+class SwipeWidgetInitialization extends StatefulWidget {
+  final List<FeedItem> feedItems;
+  final Widget Function(FeedItem,SwipeableCardController) swipeWidget;
+  final Function(FeedItem) onDislike;
+  final Function(FeedItem) onLike;
+  final Future<List<FeedItem>> Function() onReload;
+
+  const SwipeWidgetInitialization({
     super.key,
     required this.feedItems,
     required this.swipeWidget,
