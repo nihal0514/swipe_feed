@@ -13,6 +13,11 @@
 🔹 **Built-in Callbacks** – Handle events like onLike, onDislike, onReload.  
 🔹 **Optimized for Performance** – Uses efficient state management.
 
+## 📺 Demo
+
+### GIF Preview
+![Swipe Feed Demo](https://raw.githubusercontent.com/nihal0514/swipe_feed/main/assets/demo.gif)
+
 ## 🎯 Use Cases
 - **Tinder-like Swipe UI**
 - **Recommendation Feeds** (e.g., movies, news, jobs)
