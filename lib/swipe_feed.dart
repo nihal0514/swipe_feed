@@ -1,4 +1,4 @@
-library swipe_feed;
+library;
 
 export 'src/swipe_widget_initialization.dart';
 export 'src/swipe_feed_screen.dart';

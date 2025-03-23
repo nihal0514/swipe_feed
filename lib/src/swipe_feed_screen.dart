@@ -28,7 +28,7 @@ class SwipeFeedScreen extends StatelessWidget {
               }
 
               return swipeWidget(cardState,cardControllers[cardState.item.id]!);
-            }).toList(),
+            }),
           ],
         );
       }),

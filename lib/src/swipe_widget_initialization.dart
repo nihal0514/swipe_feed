@@ -37,8 +37,8 @@ class _SwipeWidgetInitializationState extends State<SwipeWidgetInitialization> {
   @override
   Widget build(BuildContext context) {
     return SwipeFeedScreen(
-      swipeWidget: (CardState,swipeCardController) {
-        return _buildCardWidget(CardState);
+      swipeWidget: (cardState,swipeCardController) {
+        return _buildCardWidget(cardState);
       },
       controller: controller,
       emptyWidget: _buildEmptyState(), cardControllers: cardControllers,
