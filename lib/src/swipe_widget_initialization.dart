@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../swipe_feed.dart';
 
-
 class SwipeWidgetInitialization extends StatefulWidget {
   final List<FeedItem> feedItems;
-  final Widget Function(FeedItem,SwipeableCardController) swipeWidget;
+  final Widget Function(FeedItem, SwipeableCardController) swipeWidget;
   final Function(FeedItem) onDislike;
   final Function(FeedItem) onLike;
   final Future<List<FeedItem>> Function() onReload;
@@ -32,16 +31,17 @@ class _SwipeWidgetInitializationState extends State<SwipeWidgetInitialization> {
   void initState() {
     super.initState();
     controller = Get.put(SwipeFeedController(feedItems: widget.feedItems));
-
   }
+
   @override
   Widget build(BuildContext context) {
     return SwipeFeedScreen(
-      swipeWidget: (cardState,swipeCardController) {
+      swipeWidget: (cardState, swipeCardController) {
         return _buildCardWidget(cardState);
       },
       controller: controller,
-      emptyWidget: _buildEmptyState(), cardControllers: cardControllers,
+      emptyWidget: _buildEmptyState(),
+      cardControllers: cardControllers,
     );
   }
 
@@ -61,7 +61,10 @@ class _SwipeWidgetInitializationState extends State<SwipeWidgetInitialization> {
             key: ValueKey(cardState.item.id),
             item: cardState.item,
             controller: controller,
-            swipeWidget: widget.swipeWidget(cardState.item,cardControllers[cardState.item.id]!),
+            swipeWidget: widget.swipeWidget(
+              cardState.item,
+              cardControllers[cardState.item.id]!,
+            ),
             onDislike: widget.onDislike,
             onLike: widget.onLike,
             cardController: cardControllers[cardState.item.id]!,
@@ -84,10 +87,8 @@ class _SwipeWidgetInitializationState extends State<SwipeWidgetInitialization> {
         ),
         SizedBox(height: 20),
         ElevatedButton(
-          onPressed: ()async{
-            widget.onReload().then((value)=>{
-              controller.onReload(value)
-            });
+          onPressed: () async {
+            widget.onReload().then((value) => {controller.onReload(value)});
           },
           child: Text('Reload'),
         ),

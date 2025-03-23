@@ -5,4 +5,3 @@ export 'src/swipe_feed_screen.dart';
 export 'src/swipeable_card.dart';
 export 'src/swipe_feed_controller.dart';
 export 'src/models.dart';
-

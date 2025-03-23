@@ -19,14 +19,15 @@ class SwipeableCard extends StatefulWidget {
     required this.swipeWidget,
     required this.onDislike,
     required this.onLike,
-    required this.cardController
+    required this.cardController,
   });
 
   @override
   _SwipeableCardState createState() => _SwipeableCardState();
 }
 
-class _SwipeableCardState extends State<SwipeableCard> with SingleTickerProviderStateMixin {
+class _SwipeableCardState extends State<SwipeableCard>
+    with SingleTickerProviderStateMixin {
   Offset _position = Offset.zero;
   double _angle = 0;
   BorderSide _borderSide = BorderSide.none;
@@ -47,7 +48,6 @@ class _SwipeableCardState extends State<SwipeableCard> with SingleTickerProvider
     widget.cardController.swipeLeft = swipeLeft;
     widget.cardController.swipeRight = swipeRight;
   }
-
 
   void swipeRight() {
     // Get the current screen size
@@ -84,11 +84,7 @@ class _SwipeableCardState extends State<SwipeableCard> with SingleTickerProvider
           _angle = 10 * curvedProgress;
 
           // Apply green border
-          _borderSide = BorderSide(
-              color: Colors.green,
-              width: 4
-          );
-
+          _borderSide = BorderSide(color: Colors.green, width: 4);
         });
       }
     };
@@ -96,7 +92,7 @@ class _SwipeableCardState extends State<SwipeableCard> with SingleTickerProvider
     // Define the animation status listener function
     _animationStatusListener = (status) {
       if (status == AnimationStatus.completed) {
-        widget.controller.likeItem(widget.item,widget.onLike);
+        widget.controller.likeItem(widget.item, widget.onLike);
       }
     };
 
@@ -137,7 +133,8 @@ class _SwipeableCardState extends State<SwipeableCard> with SingleTickerProvider
 
           // Move from current position to off-screen left
           _position = Offset(
-            startPosition.dx + (-size.width - startPosition.dx) * curvedProgress,
+            startPosition.dx +
+                (-size.width - startPosition.dx) * curvedProgress,
             startPosition.dy, // Keep vertical position the same
           );
 
@@ -145,10 +142,7 @@ class _SwipeableCardState extends State<SwipeableCard> with SingleTickerProvider
           _angle = -10 * curvedProgress;
 
           // Apply red border
-          _borderSide = BorderSide(
-              color: Colors.red,
-              width: 4
-          );
+          _borderSide = BorderSide(color: Colors.red, width: 4);
         });
       }
     };
@@ -156,7 +150,7 @@ class _SwipeableCardState extends State<SwipeableCard> with SingleTickerProvider
     // Define the animation status listener function
     _animationStatusListener = (status) {
       if (status == AnimationStatus.completed) {
-        widget.controller.dislikeItem(widget.item,widget.onDislike);
+        widget.controller.dislikeItem(widget.item, widget.onDislike);
       }
     };
 
@@ -168,6 +162,7 @@ class _SwipeableCardState extends State<SwipeableCard> with SingleTickerProvider
     _dragAnimationController.duration = const Duration(milliseconds: 1000);
     _dragAnimationController.forward();
   }
+
   @override
   void dispose() {
     if (_animationListener != null) {
@@ -199,7 +194,6 @@ class _SwipeableCardState extends State<SwipeableCard> with SingleTickerProvider
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               border: Border.fromBorderSide(_borderSide),
-
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
@@ -214,7 +208,10 @@ class _SwipeableCardState extends State<SwipeableCard> with SingleTickerProvider
                       child: Transform.rotate(
                         angle: -0.5,
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 10,
+                          ),
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.green, width: 4),
                             borderRadius: BorderRadius.circular(10),
@@ -237,7 +234,10 @@ class _SwipeableCardState extends State<SwipeableCard> with SingleTickerProvider
                       child: Transform.rotate(
                         angle: 0.5,
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 10,
+                          ),
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.red, width: 4),
                             borderRadius: BorderRadius.circular(10),
@@ -295,12 +295,12 @@ class _SwipeableCardState extends State<SwipeableCard> with SingleTickerProvider
     if (_position.dx > swipeThreshold) {
       // Swiped right - like
       _animateSwipe(MediaQuery.of(context).size.width, 0, () {
-        widget.controller.likeItem(widget.item,widget.onLike);
+        widget.controller.likeItem(widget.item, widget.onLike);
       });
     } else if (_position.dx < -swipeThreshold) {
       // Swiped left - dislike
       _animateSwipe(-MediaQuery.of(context).size.width, 0, () {
-        widget.controller.dislikeItem(widget.item,widget.onDislike);
+        widget.controller.dislikeItem(widget.item, widget.onDislike);
       });
     } else {
       // Return to center
@@ -334,7 +334,7 @@ class _SwipeableCardState extends State<SwipeableCard> with SingleTickerProvider
     // On animation complete
     _dragAnimationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        _angle=0;
+        _angle = 0;
         onComplete();
       }
     });

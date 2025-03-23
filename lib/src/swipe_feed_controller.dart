@@ -8,8 +8,8 @@ class SwipeableCardController {
   Function? swipeRight;
 }
 
-
-class SwipeFeedController extends GetxController with GetTickerProviderStateMixin {
+class SwipeFeedController extends GetxController
+    with GetTickerProviderStateMixin {
   final List<FeedItem> feedItems;
   var items = <FeedItem>[].obs;
   var cardStates = <CardState>[].obs;
@@ -17,7 +17,6 @@ class SwipeFeedController extends GetxController with GetTickerProviderStateMixi
 
   late AnimationController _stackAnimationController;
   SwipeFeedController({required this.feedItems});
-
 
   @override
   void onInit() {
@@ -36,10 +35,12 @@ class SwipeFeedController extends GetxController with GetTickerProviderStateMixi
     _stackAnimationController.dispose();
     super.onClose();
   }
+
   void onReload(List<FeedItem> newFeedItems) {
     items.assignAll(newFeedItems);
     _updateCardStates();
   }
+
   void _updateCardStates() {
     cardStates.clear();
 
@@ -49,35 +50,36 @@ class SwipeFeedController extends GetxController with GetTickerProviderStateMixi
       double yOffset = i == 0 ? 0.0 : (i * 10.0).clamp(0.0, 30.0);
       double opacity = i == 0 ? 1.0 : (1.0 - (i * 0.1)).clamp(0.5, 1.0);
 
-      cardStates.add(CardState(
-        item: items[i],
-        scale: scale,
-        yOffset: yOffset,
-        opacity: opacity,
-      ));
+      cardStates.add(
+        CardState(
+          item: items[i],
+          scale: scale,
+          yOffset: yOffset,
+          opacity: opacity,
+        ),
+      );
     }
   }
 
-  void likeItem(FeedItem item,Function(FeedItem)? onLike) {
+  void likeItem(FeedItem item, Function(FeedItem)? onLike) {
     isAnimating.value = true;
     items.remove(item);
     _updateCardStates();
-    if(onLike!=null){
+    if (onLike != null) {
       onLike(item);
     }
 
     isAnimating.value = false;
   }
 
-  void dislikeItem(FeedItem item,Function(FeedItem)? onDislike) {
+  void dislikeItem(FeedItem item, Function(FeedItem)? onDislike) {
     isAnimating.value = true;
 
     items.remove(item);
     _updateCardStates();
-    if(onDislike!=null){
+    if (onDislike != null) {
       onDislike(item);
     }
     isAnimating.value = false;
   }
-
 }
