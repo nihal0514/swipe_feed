@@ -36,5 +36,5 @@ dependencies:
 
 ## 📬 Connect with Me
 🌎 Website: https://nihaldevs.site/
-🐦 Twitter: https://x.com/home?lang=en
+🐦 Twitter: https://x.com/nihalkumar514
 📷 Instagram: https://www.instagram.com/nihal.k17/
