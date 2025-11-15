@@ -32,7 +32,7 @@ Add the following line to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  swipe_feed_ui: latest_version
+  swipe_feed: latest_version
 
 ## 📬 Connect with Me
 🌎 Website: https://nihaldevs.site/
